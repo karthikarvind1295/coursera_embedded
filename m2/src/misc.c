@@ -8,45 +8,36 @@
  * misuse of this material. 
  *
  *****************************************************************************/
+
 /**
- * @file main.c
- * @brief This file is to be used for the c1m3 assessment.
- *
- * This file provides various memory allocations. The learner will need
- * to analyze the code's memory footprint for this assessment.
+ * @file misc.h 
+ * @brief This file is to be used for the c1m2 assesment
  *
  * @author Alex Fosdick
  * @date April 2, 2017
  *
  */
-#include <stdint.h>
-#include <stdlib.h>
 #include "misc.h"
 
-static int g1;
-const int g2 = 45;
-char g3 = 12;
-char g4 = 0;
-extern char g5[N];
+#define SOME_VALUE (6)
 
-int main()
+int g5[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+int func(int * f1)
 {
-  register int l1;
-  int * l2;
-  volatile int l3 = 12;
-  
-  l2 = (int *) malloc( N * g2 * sizeof(char) );
+  static int f2;
+  unsigned int f3 = 0;
+  volatile char * f4 = "Hello World!\n";
 
-  if ( ! l2 )
+  f2++;
+  *(&g5[0] + f2) = f3;
+
+  for (f3 = 0; f3 < SOME_VALUE; f3++)
   {
-    return -1;
+    g5[f3] = f4[f3];
+    f2++;
   }
 
-  for( l1 = 0; l1 < g2; l3++)
-  {
-    g1 = func(l2);
-  }
-
-  return 0;
+  return f2;
 }
 

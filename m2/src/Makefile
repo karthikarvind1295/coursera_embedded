@@ -33,7 +33,7 @@ GEN_FLAGS = -Wall \
 			-O0 \
 			-std=c99
 
-TARGET = c1m2
+TARGET = c1m3
 
 # Platform Dependant Variables
 ifeq ($(PLATFORM), MSP432)
@@ -57,7 +57,7 @@ ifeq ($(PLATFORM), MSP432)
 
 	# Linker Flags
 	LINKER_FILE = -T ../msp432p401r.lds
-	LDFLAGS = -Wl,-Map=$(TARGET).map -T $(LINKER_FILE)
+	LDFLAGS = -Wl,-Map=$(TARGET).map $(LINKER_FILE)
 	
 	# Compiler Flags
 	CFLAGS = 	$(GEN_FLAGS) \
@@ -99,7 +99,7 @@ $(TARGET).out: $(OBJS)
 
 # Generate assembly output of c-program implementation files and the final output executable (Use the –S flag and the objdump utility).
 %.asm: %.c
-	$(CC) -S $< $(CFLAGS) $(CPPFLAGS) -o $@
+	$(CC) -S $< $(CFLAGS) $(CPPFLAGS) -o $@ 
 
 # Generate the object file for all c-source files (but do not link) by specifying the object file you want to compile.
 %.o: %.c
