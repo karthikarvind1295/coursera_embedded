@@ -10,9 +10,15 @@
 #*****************************************************************************
 
 # Add your Source files to this variable
-SOURCES = ./main.c \
-		  ./misc.c 
+SRC_DIR = ./src
+INCLUDE_DIR = ./include
+
+SOURCES = $(SRC_DIR)/main.c \
+		  $(SRC_DIR)/memory.c \
+		  $(SRC_DIR)/stats.c \
+		  $(SRC_DIR)/data.c \
+		  $(SRC_DIR)/course1.c 
 
 # Add your include paths to this variable
-INCLUDES = -I ../include/common
+INCLUDES = -I $(INCLUDE_DIR)/common
 

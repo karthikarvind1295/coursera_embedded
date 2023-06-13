@@ -22,6 +22,10 @@
 #ifndef __MEMORY_H__
 #define __MEMORY_H__
 
+#include <stdint.h>
+#include <stdio.h>
+#include <stddef.h>
+
 /**
  * @brief Sets a value of a data array 
  *
@@ -89,5 +93,103 @@ void set_all(char * ptr, char value, unsigned int size);
  * @return void.
  */
 void clear_all(char * ptr, unsigned int size);
+
+/**
+ * @brief Moves a two byte pointer from source to destination
+ *
+ * Given two bytes pointer, the function moves the data from one pointer to 
+ * another. There should be no overlap of the data. 
+ *
+ * @param src Pointer to source destination
+ * @param dst Pointer to destination
+ * @param length Length of the pointer
+ *
+ * @return Pointer to the destination.
+ */
+
+uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length);
+
+/**
+ * @brief Copies a two byte pointer from source to destination
+ *
+ * Given two bytes pointer, the function copies the data from one pointer to 
+ * another. There should be no overlap of the data. 
+ *
+ * @param src Pointer to source destination
+ * @param dst Pointer to destination
+ * @param length Length of the pointer
+ *
+ * @return Pointer to the destination.
+ */
+
+uint8_t * my_memcopy(uint8_t * src, uint8_t * dst, size_t length);
+
+/**
+ * @brief Sets the source to a given value
+ *
+ * The source pointer is taken into the function and the given 
+ * value is set in the source 
+ *
+ * @param src Pointer to source destination
+ * @param length Length of the pointer source
+ * @param value Value to be changed
+ *
+ * @return Pointer to the source.
+ */
+
+uint8_t * my_memset(uint8_t * src, size_t length, uint8_t value);
+
+/**
+ * @brief Sets the source to a given value to zero
+ *
+ * The source pointer is taken into the function and the given 
+ * value of zero is set in the source 
+ *
+ * @param src Pointer to source destination
+ * @param length Length of the pointer source
+ *
+ * @return Pointer to the source.
+ */
+
+uint8_t * my_memzero(uint8_t * src, size_t length);
+
+/**
+ * @brief Reverses the order of all bytes
+ *
+ * The source pointer is taken into the function and reverses the 
+ * order of all the bytes
+ *
+ * @param src Pointer to source destination
+ * @param length Length of the pointer source
+ *
+ * @return Pointer to the source.
+ */
+
+uint8_t * my_reverse(uint8_t * src, size_t length);
+
+/**
+ * @brief Allocate dynamic memory to reverse words
+ *
+ * The source pointer is taken into the function and reverses the 
+ * order of all the bytes
+ *
+ * @param length Length of the pointer source
+ *
+ * @return Pointer to the source.
+ */
+
+int32_t * reserve_words(size_t length);
+
+/**
+ * @brief Free dynamic memory to reverse words
+ *
+ * The dynamic language must be destroyed
+ *
+ * @param src Source pointer
+ *
+ * @return No return function
+ */
+
+void free_words(uint32_t * src);
 
 #endif /* __MEMORY_H__ */
